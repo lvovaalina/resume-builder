@@ -8,8 +8,6 @@ export const useAuth = () => {
     return useContext(AuthContext);
 };
 
-export const Val = 10
-
 const AuthProvider = ({ children }) => {
     const [ token, setToken ] = useState(getInitialToken());
     const navigate = useNavigate()
@@ -39,7 +37,6 @@ const AuthProvider = ({ children }) => {
       }, [token]);
 
     function getInitialToken() {
-        // getting stored items
         const temp = localStorage.getItem("token")
         const savedToken = JSON.parse(temp)
         return savedToken || []

@@ -50,7 +50,6 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
         reader.readAsDataURL(files[0]);
  
         reader.onload = (e) => {
-            console.log(e.target.result);
             setCommonInfo({
                 ...commonInfo,
                 photo: e.target.result,
@@ -77,7 +76,8 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
             <div className="flex justify-around">
                 <div>
                     <img src={commonInfo.photo} className="w-28 rounded-full"/>
-                    <input type="file" onChange={onFileInputChange}/>
+                    <label for="image-upload" className="label">Upload image:</label>
+                    <input type="file" id="image-upload" className="file-input" accept="image/png, image/jpeg" onChange={onFileInputChange}/>
                 </div>
                 <div>
                     <div>
