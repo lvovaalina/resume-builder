@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react'
+import React, { useState, createContext, useContext, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import fakeAuth from '../services/fakeAuth'
 
@@ -11,7 +11,7 @@ export const useAuth = () => {
 export const Val = 10
 
 const AuthProvider = ({ children }) => {
-    const [ token, setToken ] = useState(null);
+    const [ token, setToken ] = useState(getInitialToken());
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -31,6 +31,18 @@ const AuthProvider = ({ children }) => {
         token: token,
         onLogin: handleLogin,
         onLogout: handleLogout,
+    }
+
+    useEffect(() => {
+        const temp = JSON.stringify(token)
+        localStorage.setItem("token", temp)
+      }, [token]);
+
+    function getInitialToken() {
+        // getting stored items
+        const temp = localStorage.getItem("token")
+        const savedToken = JSON.parse(temp)
+        return savedToken || []
     }
 
     return (
