@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { BsPersonCircle } from 'react-icons/bs'
 
-const CommonInfo = ({ savedCommonInfo, handleSave }) => {
-    const [ commonInfo, setCommonInfo ] = useState({
+const ContactInformation = ({ savedContactInformation, handleSave }) => {
+    const [ contactInformation, setContactInformation ] = useState({
         edit: false,
         photo: null,
         name: '',
@@ -11,24 +11,24 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
     })
 
     const handleEdit = () => {
-        setCommonInfo({
-            name: savedCommonInfo.name,
-            surname: savedCommonInfo.surname,
-            summary: savedCommonInfo.summary,
-            photo: savedCommonInfo.photo,
+        setContactInformation({
+            name: savedContactInformation.name,
+            surname: savedContactInformation.surname,
+            summary: savedContactInformation.summary,
+            photo: savedContactInformation.photo,
             edit: true,
         })
     }
 
     const onSave = () => {
         handleSave({
-            photo: commonInfo.photo,
-            summary: commonInfo.summary,
-            name: commonInfo.name,
-            surname: commonInfo.surname,
+            photo: contactInformation.photo,
+            summary: contactInformation.summary,
+            name: contactInformation.name,
+            surname: contactInformation.surname,
         });
 
-        setCommonInfo({
+        setContactInformation({
             name: '',
             surname: '',
             summary: '',
@@ -38,8 +38,8 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
     }
 
     const onChange = (e) => {
-        setCommonInfo({
-            ...commonInfo,
+        setContactInformation({
+            ...contactInformation,
             [e.target.name]: e.target.value,
         })
     }
@@ -50,8 +50,8 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
         reader.readAsDataURL(files[0]);
  
         reader.onload = (e) => {
-            setCommonInfo({
-                ...commonInfo,
+            setContactInformation({
+                ...contactInformation,
                 photo: e.target.result,
             })
         }
@@ -59,25 +59,33 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
 
     return (
         <>
-        { !commonInfo.edit ? (
+        { !contactInformation.edit ? (
             <div className="flex justify-around">
                 <div>
-                {!savedCommonInfo.photo ? (<BsPersonCircle className='text-4xl' />)
-                : (<img src={savedCommonInfo.photo} className="w-28 rounded-full" alt="Resume shot" />)}
+                {!savedContactInformation.photo ? (<BsPersonCircle className='text-4xl' />)
+                : (<img
+                    src={savedContactInformation.photo}
+                    className="w-28 rounded-full"
+                    alt="Resume shot" />)}
                 </div>
                 <div className="flex flex-col">
-                    <div>{savedCommonInfo.name} {savedCommonInfo.surname}</div>
+                    <div>{savedContactInformation.name} {savedContactInformation.surname}</div>
                     <label>Summary</label>
-                    <div>{savedCommonInfo.summary}</div>
+                    <div>{savedContactInformation.summary}</div>
                 </div>
                 <button onClick={handleEdit}>Edit</button>
            </div>)
         : (
             <div className="flex justify-around">
                 <div>
-                    <img src={commonInfo.photo} className="w-28 rounded-full"/>
-                    <label for="image-upload" className="label">Upload image:</label>
-                    <input type="file" id="image-upload" className="file-input" accept="image/png, image/jpeg" onChange={onFileInputChange}/>
+                    <img src={contactInformation.photo} className="w-28 rounded-full"/>
+                    <label htmlFor="image-upload" className="label">Upload image:</label>
+                    <input 
+                        type="file"
+                        id="image-upload"
+                        className="file-input"
+                        accept="image/png, image/jpeg"
+                        onChange={onFileInputChange}/>
                 </div>
                 <div>
                     <div>
@@ -86,7 +94,7 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
                             <input type="text"
                                 id="first_name"
                                 name="name"
-                                value={commonInfo.name}
+                                value={contactInformation.name}
                                 onChange={onChange}
                                 className="input" placeholder="John"/>
                         </div>
@@ -98,7 +106,7 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
                                 className="input"
                                 placeholder="Doe"
                                 name="surname"
-                                value={commonInfo.surname}
+                                value={contactInformation.surname}
                                 onChange={onChange}
                                 required/>
                         </div>
@@ -111,7 +119,7 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
                         className="textarea"
                         placeholder="Your summary..."
                         name="summary"
-                        value={commonInfo.summary}
+                        value={contactInformation.summary}
                         onChange={onChange}
                         ></textarea>
 
@@ -123,4 +131,4 @@ const CommonInfo = ({ savedCommonInfo, handleSave }) => {
     )
 }
 
-export default CommonInfo
+export default ContactInformation
