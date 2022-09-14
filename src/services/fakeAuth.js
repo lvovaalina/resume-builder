@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 const fakeAuth = () =>
   new Promise((resolve) => {
     setTimeout(() => resolve('2342f2f1d131rf12'), 250);
@@ -8,12 +10,26 @@ export default fakeAuth;
 export const fakeResume = () => 
     new Promise((resolve) => {
         setTimeout(() => resolve({
-            commonInfo: {
+            contactInformation: {
                 summary: 'I am developer',
                 photo: photoBase64,
                 name: 'Alina',
                 surname: 'Lvova',
-            }
+            },
+            educationList: [
+                {
+                    id: 1,
+                    educationName: 'BSUIR',
+                    educationDates: [moment('2018'), moment('2022')],
+                    degree: 'Bachelor',
+                },
+                {
+                    id: 2,
+                    educationName: 'BSUIR',
+                    educationDates: [moment('2018'), moment('2022')],
+                    degree: 'Bachelor',
+                },
+            ]
         }, 250))
     })
 
