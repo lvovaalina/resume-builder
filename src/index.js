@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import ResumeApp from './components/ResumeApp'
+import ResumeApp from './ResumeApp'
 import { BrowserRouter } from 'react-router-dom'
 import 'antd/dist/antd.min.css';
 

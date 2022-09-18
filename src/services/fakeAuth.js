@@ -29,7 +29,9 @@ export const fakeResume = () =>
                     educationDates: [moment('2018'), moment('2022')],
                     degree: 'Bachelor',
                 },
-            ]
+            ],
+            workList: [],
+            skillList: [],
         }, 250))
     })
 

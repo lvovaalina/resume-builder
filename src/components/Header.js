@@ -1,6 +1,5 @@
 import React from 'react'
-import { useAuth } from './AuthProvider'
-import { NavLink } from 'react-router-dom'
+import { useAuth } from '../containers/AuthProvider'
 
 const Header = () => {
     const { token, onLogout, onLogin } = useAuth()
@@ -11,13 +10,12 @@ const Header = () => {
             </a>
 
             <nav className="flex justify-between">
-                <NavLink className="m-auto" to="/resume">Resume</NavLink>
                 { token && (<button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    className="outline-button"
                     onClick={onLogout}>Logout</button>) }
                 { !token && <button
                     type="button"
-                    className="bg-sky-600 hover:bg-sky-700 px-5 py-3 text-white rounded-lg"
+                    className="button"
                     onClick={onLogin}>Login</button>}
             </nav>
         </div>

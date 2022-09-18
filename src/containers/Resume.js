@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import ContactInformation from './ContactInformation'
-import EducationList from './education/EducationList'
-import WorkList from './work/WorkList'
+import ContactInformation from '../components/ContactInformation'
+import EducationList from '../components/EducationList'
+import WorkList from '../components/WorkList'
 import { v4 as uuidv4} from 'uuid'
 import { fakeResume } from '../services/fakeAuth'
+import SkillList from '../components/SkillList'
 
 
-const Resume = () => {
+const ResumeContainer = () => {
 
     const [ resume, setResumeInfo ] = useState({
         workList: [],
         contactInformation: {},
         educationList: [],
+        skillList: [],
     });
 
     useEffect(() => {
@@ -57,6 +59,31 @@ const Resume = () => {
         }))
     }
 
+    const handleSaveSkill = (updatedSkill) => {
+        if (!updatedSkill.id) {
+            updatedSkill.id = uuidv4();
+            setResumeInfo(prevResume => ({
+                ...prevResume,
+                skillList: [...prevResume.skillList, updatedSkill]
+            }))
+            return
+        }
+        setResumeInfo(prevResume => ({
+            ...prevResume,
+            skillList: prevResume.skillList.map(skill => {
+                if (skill.id === updatedSkill.id) {
+                    return {
+                        ...skill,
+                        name: updatedSkill.name,
+                        level: updatedSkill.level,
+                    };
+                }
+
+                return skill;
+            })
+        }))
+    }
+
     const handleSaveWork = (updatedWork) => {
         if (!updatedWork.id) {
             updatedWork.id = uuidv4();
@@ -87,21 +114,23 @@ const Resume = () => {
 
     return (
         <>
-        <h2 className="text-center text-xl text-bold">Resume</h2>
+            {/* <ContactInformation
+                savedContactInformation={resume.contactInformation}
+                handleSave={handleSaveContactInformation}/> */}
 
-        <ContactInformation
-            savedContactInformation={resume.contactInformation}
-            handleSave={handleSaveContactInformation}/>
+            <EducationList
+                educationList={resume.educationList}
+                handleSubmit={handleSaveEducation}/>
 
-        <EducationList
-            educationList={resume.educationList}
-            handleSubmit={handleSaveEducation}/>
+            <WorkList
+                workList={resume.workList}
+                onSubmitHandler={handleSaveWork}/>
 
-        <WorkList
-            workList={resume.workList}
-            onSubmitHandler={handleSaveWork}/>
+            <SkillList
+                skillList={resume.skillList}
+                onSubmitHandler={handleSaveSkill}/>
         </>
     )
 }
 
-export default Resume
+export default ResumeContainer

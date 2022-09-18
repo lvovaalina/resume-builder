@@ -1,11 +1,11 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import AuthProvider from './AuthProvider'
-import Home from './Home'
-import NotFound from './NotFound'
-import ProtectedRoute from './ProtectedRoute'
-import Resume from './Resume'
-import Header from './Header'
+import AuthProvider from './containers/AuthProvider'
+import Home from './pages/Home'
+import NotFound from './pages/NotFound'
+import ProtectedRoute from './containers/ProtectedRoute'
+import Resume from './pages/Resume'
+import Header from './components/Header'
 
 const ResumeApp = () => {
     return (

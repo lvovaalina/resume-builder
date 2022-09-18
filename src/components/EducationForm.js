@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Space, DatePicker } from 'antd'
 
 const {RangePicker} = DatePicker
@@ -32,7 +32,7 @@ const EducationForm = (
     }
 
     return (
-        <div>
+        <div className="ring-2 p-4 my-4 rounded-md flex flex-col justify-between ring-gray-200">
             <label className="label" htmlFor="education-name">Name:</label>
             <input
                 className="input"
@@ -49,7 +49,7 @@ const EducationForm = (
                 name="degree"
                 value={education.degree}
                 onChange={onChange}/>
-            <button className="button" onClick={onSubmit}>Submit</button>
+            <button className="button w-24" onClick={onSubmit}>Submit</button>
         </div>)
 }
 

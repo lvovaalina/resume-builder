@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAuth } from './AuthProvider'
+import { useAuth } from '../containers/AuthProvider'
 
 const Home = () => {
     let { onLogin } = useAuth();
