@@ -20,9 +20,9 @@ const EducationList = ({educationList, handleSubmit}) => {
     return (
         <>
         <div className="flex justify-between">
-            <h2 className="text-3xl">Education</h2>
+            <h2 className="text-3xl my-0">Education</h2>
 
-            {!create && <button class="outline-button" onClick={() => setCreate(true)}>Add Education </button>}
+            {!create && <button className="outline-button" onClick={() => setCreate(true)}>Add Education </button>}
         </div>
         {create && <EducationForm savedEducation={emptyEducation} handleSubmit={onCreate}/>}
         

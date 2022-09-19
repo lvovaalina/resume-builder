@@ -11,7 +11,7 @@ export const fakeResume = () =>
     new Promise((resolve) => {
         setTimeout(() => resolve({
             contactInformation: {
-                summary: 'I am developer',
+                summary: 'I am an experienced professional seeking an opportunity to use my background in data analysis and market trend research. I am a dedicated and detail-oriented marketing specialist looking for an opportunity to expand my professional skillset and help Company X grow.',
                 photo: photoBase64,
                 name: 'Alina',
                 surname: 'Lvova',
@@ -30,8 +30,25 @@ export const fakeResume = () =>
                     degree: 'Bachelor',
                 },
             ],
-            workList: [],
-            skillList: [],
+            workList: [{
+                companyName: 'Itechart',
+                dates: [moment('2018'), moment('2022')],
+                position: 'Software Engineer',
+                description: 'sucks',
+                id: 12312312,
+            }],
+            skillList: [
+                {
+                    name: 'SQL',
+                    level: 3,
+                    id: 44,
+                },
+                {
+                    name: 'Python',
+                    level: 4,
+                    id: 55,
+                }
+            ],
         }, 250))
     })
 

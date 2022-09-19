@@ -24,8 +24,10 @@ const WorkList = ({workList, onSubmitHandler}) => {
 
     return (
         <>
-            <h1>Work Expirience</h1>
-            <button onClick={onCreate}>Add Work</button>
+            <div className="flex justify-between">
+                <h2 className="text-3xl my-0">Work Expirience</h2>
+                <button className="outline-button" onClick={onCreate}>Add Work</button>
+            </div>
             {create && <WorkForm savedWork={emptyWork} onSubmitHandler={onSubmit} /> }
 
             {workList.map(work => (

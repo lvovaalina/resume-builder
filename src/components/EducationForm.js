@@ -22,7 +22,9 @@ const EducationForm = (
         })
     }
 
-    const onSubmit = () => {
+    const onSubmit = (e) => {
+        e.preventDefault()
+
         handleSubmit({
             id: education.id,
             educationName: education.educationName,
@@ -33,8 +35,10 @@ const EducationForm = (
 
     return (
         <div className="ring-2 p-4 my-4 rounded-md flex flex-col justify-between ring-gray-200">
+            <form onSubmit={onSubmit}>
             <label className="label" htmlFor="education-name">Name:</label>
             <input
+                required
                 className="input"
                 id="education-name"
                 type="text" name="educationName" value={education.educationName} onChange={onChange}/>
@@ -44,12 +48,14 @@ const EducationForm = (
             </Space>
             <label className="label" htmlFor="degree">Degree:</label>
             <input
+                required
                 className="input"
                 id="degree" type="text"
                 name="degree"
                 value={education.degree}
                 onChange={onChange}/>
-            <button className="button w-24" onClick={onSubmit}>Submit</button>
+            <button className="button w-24">Submit</button>
+            </form>
         </div>)
 }
 

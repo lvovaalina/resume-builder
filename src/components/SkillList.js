@@ -18,15 +18,15 @@ const SkillList = ({skillList, onSubmitHandler}) => {
     const onSubmit = (skill) => {
         onSubmitHandler(skill)
 
-        console.log('sdfsdf')
-
         setCreate(false)
     }
    
     return (
         <>
-            <h2>Skills</h2>
-            {!create && <button onClick={onCreate}>Add Skill</button>}
+            <div className="flex justify-between">
+            <h2 className="text-3xl my-0">Skills</h2>
+            {!create && <button className="outline-button" onClick={onCreate}>Add Skill</button>}
+            </div>
             {create && <SkillForm savedSkill={emptySkill} onSubmitHandler={onSubmit} /> }
 
             {skillList.map(skill => (

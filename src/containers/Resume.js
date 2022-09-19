@@ -114,9 +114,9 @@ const ResumeContainer = () => {
 
     return (
         <>
-            {/* <ContactInformation
+            <ContactInformation
                 savedContactInformation={resume.contactInformation}
-                handleSave={handleSaveContactInformation}/> */}
+                handleSave={handleSaveContactInformation}/>
 
             <EducationList
                 educationList={resume.educationList}

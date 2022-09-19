@@ -59,21 +59,24 @@ const ContactInformation = ({ savedContactInformation, handleSave }) => {
 
     return (
         <>
+        <h2 className="text-3xl my-0">Contact Information</h2>
         { !contactInformation.edit ? (
-            <div className="flex justify-around">
-                <div>
-                {!savedContactInformation.photo ? (<BsPersonCircle className='text-4xl' />)
-                : (<img
-                    src={savedContactInformation.photo}
-                    className="w-28 rounded-full"
-                    alt="Resume shot" />)}
+            <div className="flex my-8 justify-between">
+                <div className="flex flex-row">
+                    <div className="w-28 mr-4">
+                    {!savedContactInformation.photo ? (<BsPersonCircle className='text-4xl' />)
+                    : (<img
+                        src={savedContactInformation.photo}
+                        className="w-28 rounded-full"
+                        alt="Resume shot" />)}
+                    </div>
+                    <div className="flex flex-col">
+                        <div className="font-bold">{savedContactInformation.name} {savedContactInformation.surname}</div>
+                        <div>imlvovaalina@gmail.com</div>
+                        <div className="max-w-2xl">{savedContactInformation.summary}</div>
+                    </div>
                 </div>
-                <div className="flex flex-col">
-                    <div>{savedContactInformation.name} {savedContactInformation.surname}</div>
-                    <label>Summary</label>
-                    <div>{savedContactInformation.summary}</div>
-                </div>
-                <button onClick={handleEdit}>Edit</button>
+                <button className="outline-button h-14" onClick={handleEdit}>Edit</button>
            </div>)
         : (
             <div className="flex justify-around">
@@ -122,9 +125,8 @@ const ContactInformation = ({ savedContactInformation, handleSave }) => {
                         value={contactInformation.summary}
                         onChange={onChange}
                         ></textarea>
-
                 </div>
-                <button onClick={onSave}>Save</button>
+                <button className="button" onClick={onSave}>Save</button>
            </div>)
         }
         </>

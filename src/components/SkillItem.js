@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import {Rate, Slider} from 'antd'
+import {Rate} from 'antd'
 import SkillForm from './SkillForm'
-import SkillList from './SkillList'
 
 const SkillItem = ({savedSkill, onSubmitHandler}) => {
     const [edit, setEdit] = useState(false)
@@ -19,10 +18,12 @@ const SkillItem = ({savedSkill, onSubmitHandler}) => {
     return (
         <>
             {!edit &&
-                <div>
-                    <div>{savedSkill.name}</div>
-                    <Rate disabled value={savedSkill.level}/>
-                    <button onClick={onEdit}>Edit</button>
+                <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
+                        <div className="mr-4">{savedSkill.name}</div>
+                        <Rate disabled value={savedSkill.level}/>
+                    </div>
+                    <button className="outline-button" onClick={onEdit}>Edit</button>
                 </div>
             }
 

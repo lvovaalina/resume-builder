@@ -18,16 +18,15 @@ const EducationItem = ({ savedEducation, handleSubmit }) => {
     return (
         <div className="ring-2 p-4 my-4 rounded-md flex justify-between ring-gray-200">
             {!editMode ? (
+                <>
                 <div>
+                    <div className="font-bold">{savedEducation.educationName}</div>
                     <div>
-                        <div>{savedEducation.educationName}</div>
-                        <div>
-                            {savedEducation.educationDates[0].format('YYYY')}
-                            - {savedEducation.educationDates[1].format('YYYY')}</div>
-                        <div>{savedEducation.degree}</div>
-                    </div>
-                    <button className="outline-button" onClick={onEdit}>Edit</button>
+                        {savedEducation.educationDates[0].format('YYYY')} - {savedEducation.educationDates[1].format('YYYY')}</div>
+                    <div>{savedEducation.degree}</div>
                 </div>
+                <button className="outline-button" onClick={onEdit}>Edit</button>
+                </>
             ) : (
                 <EducationForm savedEducation={savedEducation} handleSubmit={onSubmit}></EducationForm>
             )}
