@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import AuthProvider from './containers/AuthProvider'
+import AuthProvider from './providers/AuthProvider'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import ProtectedRoute from './containers/ProtectedRoute'
