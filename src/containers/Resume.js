@@ -36,15 +36,15 @@ const ResumeContainer = () => {
     const handleSaveEducation = (updatedEducation) => {
         if (!updatedEducation.id) {
             updatedEducation.id = uuidv4();
-            setResumeInfo(prevResume => ({
-                ...prevResume,
-                educationList: [...prevResume.educationList, updatedEducation]
-            }))
+            setResumeInfo({
+                ...resume,
+                educationList: [...resume.educationList, updatedEducation]
+            })
             return
         }
-        setResumeInfo(prevResume => ({
-            ...prevResume,
-            educationList: prevResume.educationList.map(education => {
+        setResumeInfo({
+            ...resume,
+            educationList: resume.educationList.map(education => {
                 if (education.id === updatedEducation.id) {
                     return {
                         ...education,
@@ -56,21 +56,21 @@ const ResumeContainer = () => {
 
                 return education
             })
-        }))
+        })
     }
 
     const handleSaveSkill = (updatedSkill) => {
         if (!updatedSkill.id) {
             updatedSkill.id = uuidv4();
-            setResumeInfo(prevResume => ({
-                ...prevResume,
-                skillList: [...prevResume.skillList, updatedSkill]
-            }))
+            setResumeInfo({
+                ...resume,
+                skillList: [...resume.skillList, updatedSkill]
+            })
             return
         }
-        setResumeInfo(prevResume => ({
-            ...prevResume,
-            skillList: prevResume.skillList.map(skill => {
+        setResumeInfo({
+            ...resume,
+            skillList: resume.skillList.map(skill => {
                 if (skill.id === updatedSkill.id) {
                     return {
                         ...skill,
@@ -81,22 +81,22 @@ const ResumeContainer = () => {
 
                 return skill;
             })
-        }))
+        })
     }
 
     const handleSaveWork = (updatedWork) => {
         if (!updatedWork.id) {
             updatedWork.id = uuidv4();
-            setResumeInfo(prevResume => ({
-                ...prevResume,
-                workList: [...prevResume.workList, updatedWork]
-            }))
+            setResumeInfo({
+                ...resume,
+                workList: [...resume.workList, updatedWork]
+            })
             console.log(resume);
             return
         }
-        setResumeInfo(prevResume => ({
-            ...prevResume,
-            workList: prevResume.workList.map(work => {
+        setResumeInfo({
+            ...resume,
+            workList: resume.workList.map(work => {
                 if (work.id === updatedWork.id) {
                     return {
                         ...work,
@@ -109,7 +109,7 @@ const ResumeContainer = () => {
 
                 return work;
             })
-        }))
+        })
     }
 
     return (
