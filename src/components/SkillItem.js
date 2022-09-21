@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Rate} from 'antd'
 import SkillForm from './SkillForm'
 
-const SkillItem = ({savedSkill, onSubmitHandler}) => {
+const SkillItem = ({savedItem, handleSubmit}) => {
     const [edit, setEdit] = useState(false)
 
     const onEdit = () => {
@@ -10,7 +10,7 @@ const SkillItem = ({savedSkill, onSubmitHandler}) => {
     }
 
     const onSubmit = (skill) => {
-        onSubmitHandler(skill)
+        handleSubmit(skill)
 
         setEdit(false)
     }
@@ -20,14 +20,14 @@ const SkillItem = ({savedSkill, onSubmitHandler}) => {
             {!edit &&
                 <div className="flex justify-between">
                     <div className="flex justify-between items-center">
-                        <div className="mr-4">{savedSkill.name}</div>
-                        <Rate disabled value={savedSkill.level}/>
+                        <div className="mr-4">{savedItem.name}</div>
+                        <Rate disabled value={savedItem.level}/>
                     </div>
                     <button className="outline-button" onClick={onEdit}>Edit</button>
                 </div>
             }
 
-            {edit && <SkillForm savedSkill={savedSkill} onSubmitHandler={onSubmit}/>}
+            {edit && <SkillForm savedItem={savedItem} handleSubmit={onSubmit}/>}
         </>
     )
 }

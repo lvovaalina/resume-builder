@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import EducationForm from './EducationForm'
 
-const EducationItem = ({ savedEducation, handleSubmit }) => {
+const EducationItem = ({ savedItem, handleSubmit }) => {
     
     const [ editMode, setEditMode ] = useState(false);
 
@@ -20,15 +20,15 @@ const EducationItem = ({ savedEducation, handleSubmit }) => {
             {!editMode ? (
                 <>
                 <div>
-                    <div className="font-bold">{savedEducation.educationName}</div>
+                    <div className="font-bold">{savedItem.educationName}</div>
                     <div>
-                        {savedEducation.educationDates[0].format('YYYY')} - {savedEducation.educationDates[1].format('YYYY')}</div>
-                    <div>{savedEducation.degree}</div>
+                        {savedItem.educationDates[0].format('YYYY')} - {savedItem.educationDates[1].format('YYYY')}</div>
+                    <div>{savedItem.degree}</div>
                 </div>
                 <button className="outline-button" onClick={onEdit}>Edit</button>
                 </>
             ) : (
-                <EducationForm savedEducation={savedEducation} handleSubmit={onSubmit}></EducationForm>
+                <EducationForm savedItem={savedItem} handleSubmit={onSubmit}></EducationForm>
             )}
         </div>
     )

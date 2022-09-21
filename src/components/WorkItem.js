@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import WorkForm from './WorkForm'
 
-const WorkItem = ({savedWork, onSubmitHandler}) => {
+const WorkItem = ({savedItem, handleSubmit}) => {
 
     const [edit, setEdit] = useState(false)
 
@@ -10,9 +10,9 @@ const WorkItem = ({savedWork, onSubmitHandler}) => {
     }
 
     const onSubmit = (work) => {
-        onSubmitHandler(work)
+        handleSubmit(work)
 
-        setEdit(true)
+        setEdit(false)
     }
 
     return (
@@ -20,17 +20,17 @@ const WorkItem = ({savedWork, onSubmitHandler}) => {
             {!edit &&
             <>
                 <div>
-                    <div className="font-bold">{savedWork.companyName}</div>
-                    <div>{savedWork.position}</div>
-                    <div>{savedWork.dates[0].format('MMMM YYYY')} - {savedWork.dates[1].format('MMMM YYYY')}</div>
-                    <div>{savedWork.description}</div>
+                    <div className="font-bold">{savedItem.companyName}</div>
+                    <div>{savedItem.position}</div>
+                    <div>{savedItem.dates[0].format('MMMM YYYY')} - {savedItem.dates[1].format('MMMM YYYY')}</div>
+                    <div>{savedItem.description}</div>
                 </div>
                 <button  className="outline-button" onClick={onEdit}>Edit</button>
             </>
             }
 
             {edit &&
-                <WorkForm savedWork={savedWork} onSubmitHandler={onSubmit} />
+                <WorkForm savedItem={savedItem} handleSubmit={onSubmit} />
             }
         </div>
     )

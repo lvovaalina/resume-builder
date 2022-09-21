@@ -1,8 +1,18 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Rate} from 'antd'
 
-const SkillForm = ({savedSkill, onSubmitHandler}) => {
-    const [skill, setSkill] = useState(savedSkill)
+const SkillForm = ({savedItem, handleSubmit}) => {
+    const [skill, setSkill] = useState({
+        id: null,
+        name: '',
+        level: 0,
+    })
+
+    useEffect(() => {
+        if (!!savedItem) {
+            setSkill(savedItem)
+        }
+    }, [savedItem])
 
     const onChange = e => {
         setSkill({
@@ -14,8 +24,8 @@ const SkillForm = ({savedSkill, onSubmitHandler}) => {
     const onSubmit = e => {
         e.preventDefault()
 
-        onSubmitHandler({
-            ...savedSkill,
+        handleSubmit({
+            ...savedItem,
             name: skill.name,
             level: skill.level,
         })

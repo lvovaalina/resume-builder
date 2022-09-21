@@ -9,7 +9,8 @@ export default fakeAuth;
 
 export const fakeResume = () => 
     new Promise((resolve) => {
-        setTimeout(() => resolve({
+        setTimeout(() => 
+        resolve({
             contactInformation: {
                 summary: 'I am an experienced professional seeking an opportunity to use my background in data analysis and market trend research. I am a dedicated and detail-oriented marketing specialist looking for an opportunity to expand my professional skillset and help Company X grow.',
                 photo: photoBase64,

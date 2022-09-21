@@ -1,12 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Space, DatePicker } from 'antd'
 
 const {RangePicker} = DatePicker
 
-const EducationForm = (
-    {savedEducation, handleSubmit}
-) => {
-    const [education, setEducation] = useState(savedEducation)
+const EducationForm = ({savedItem, handleSubmit}) => {
+    const [education, setEducation] = useState({
+        id: null,
+        educationName: '',
+        educationDates: [],
+        degree: '',
+    })
+
+    useEffect(() => {
+        if (!!savedItem) {
+            setEducation(savedItem)
+        }
+    }, [savedItem])
 
     const onChangeDate = (date) => {
         setEducation({

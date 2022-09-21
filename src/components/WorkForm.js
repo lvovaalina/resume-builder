@@ -1,10 +1,22 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {DatePicker} from 'antd'
 
 const {RangePicker} = DatePicker
 
-const WorkForm = ({savedWork, onSubmitHandler}) => {
-    const [work, setWork] = useState(savedWork)
+const WorkForm = ({savedItem, handleSubmit}) => {
+    const [work, setWork] = useState({
+        id: null,
+        companyName: '',
+        dates: [],
+        description: '',
+        position: '',
+    })
+
+    useEffect(() => {
+        if (!!savedItem) {
+            setWork(savedItem)
+        }
+    }, [savedItem])
 
     const onChange = (e) => {
         setWork({
@@ -23,7 +35,7 @@ const WorkForm = ({savedWork, onSubmitHandler}) => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        onSubmitHandler({
+        handleSubmit({
             ...work,
             companyName: work.companyName,
             dates: work.dates,
